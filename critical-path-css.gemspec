@@ -6,9 +6,12 @@ Gem::Specification.new do |s|
   s.description = 'Critical Path CSS'
   s.authors     = ['Michael Misshore']
   s.email       = 'mmisshore@gmail.com'
-  s.files       = ['lib/critical-path-css.rb']
   s.homepage    = 'http://rubygems.org/gems/critical-path-css'
   s.license     = 'MIT'
 
   s.add_runtime_dependency 'phantomjs', ['~> 1.9.8.0']
+
+  s.files        = `git ls-files`.split("\n")
+  s.executables  = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
+  s.require_path = 'lib'
 end
