@@ -1,4 +1,4 @@
-require 'critical-path-css'
+require 'critical-path-css-rails'
 
 namespace :critical_path_css do
   @base_url = Rails.env.production? ? 'http://example.com' : 'http://localhost:3000'
