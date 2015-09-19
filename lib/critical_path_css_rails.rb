@@ -4,8 +4,8 @@ module CriticalPathCss
   CACHE_NAMESPACE = 'critical-path-css'
   PENTHOUSE_PATH = "#{File.dirname(__FILE__)}/penthouse/penthouse.js"
 
-  def self.generate (main_css_path, base_url, routes)
-    full_main_css_path = "#{Rails.root.to_s}/public#{main_css_path}"
+  def self.generate(main_css_path, base_url, routes)
+    full_main_css_path = "#{Rails.root}/public#{main_css_path}"
 
     routes.each do |route|
       css = Phantomjs.run(PENTHOUSE_PATH, base_url + route, full_main_css_path)
@@ -13,7 +13,7 @@ module CriticalPathCss
     end
   end
 
-  def self.fetch (route)
+  def self.fetch(route)
     Rails.cache.read(route, namespace: CACHE_NAMESPACE) || ''
   end
 end
