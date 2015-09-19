@@ -1,4 +1,4 @@
-# critical-path-css-rails
+# critical-path-css-rails [![Code Climate](https://codeclimate.com/github/mudbugmedia/critical-path-css-rails/badges/gpa.svg)](https://codeclimate.com/github/mudbugmedia/critical-path-css-rails)
 
 Only load the CSS you need for the initial viewport in Rails!
 
