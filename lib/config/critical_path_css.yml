@@ -1,0 +1,19 @@
+defaults: &defaults
+  # If using the asset pipeline, provide the manifest name
+  manifest_name: application
+  # Else provide the relative path of your CSS file from the /public directory
+  # css_path: /path/to/css/from/public/main.css
+  routes:
+    - /
+
+development:
+  <<: *defaults
+  base_url: http://localhost:3000
+
+staging:
+  <<: *defaults
+  base_url: http://staging.example.com
+
+production:
+  <<: *defaults
+  base_url: http://example.com
