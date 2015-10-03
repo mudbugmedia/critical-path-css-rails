@@ -14,7 +14,7 @@ This gem uses [PhantomJS](https://github.com/colszowka/phantomjs-gem) and [Penth
 Add `critical-path-css-rails` to your Gemfile:
 
 ```
-gem 'critical-path-css-rails', '~> 0.1.0'
+gem 'critical-path-css-rails', '~> 0.2.0'
 ```
 
 Download and install by running:
@@ -23,24 +23,26 @@ Download and install by running:
 bundle install
 ```
 
-Create the rake task that will generate your critical CSS
+Run the generator to install the rake task and configuration file:
 
 ```
 rails generator critical_path_css:install
 ```
 
-This adds the following file:
+The generator adds the following files:
 
+* `config/critical_path_css.yml`
 * `lib/tasks/critical_path_css.rake`
 
 
 ## Usage
 
-First, you'll need to configue a few variables in the rake task: `lib/tasks/critical_path_css.rake`
+First, you'll need to configue a few things in the YAML file: `config/critical_path_css.yml`
 
-* `@base_url`: Change the url's here to match your Production and Development base URL, respectively.
-* `@routes`: List the routes that you would like to generate the critical CSS for. (i.e. /resources, /resources/show/1, etc.)
-* `@main_css_path`: Inside of the generate task, you'll need to define the path to the application's main CSS. The gem assumes your CSS lives in `RAILS_ROOT/public`. If your main CSS file is in `RAILS_ROOT/public/assets/main.css`, you would set the variable to `/assets/main.css`.
+* `manifest_name`: If you're using the asset pipeline, add the manifest name.
+* `css_path`: If you're not using the asset pipeline, you'll need to define the path to the application's main CSS. The gem assumes your CSS lives in `RAILS_ROOT/public`. If your main CSS file is in `RAILS_ROOT/public/assets/main.css`, you would set the variable to `/assets/main.css`.
+* `routes`: List the routes that you would like to generate the critical CSS for. (i.e. /resources, /resources/show/1, etc.)
+* `base_url`: Add your application's URL for the necessary environments.
 
 
 Before generating the CSS, ensure that your application is running (viewable from a browser) and the main CSS file exists. Then in a separate tab, run the rake task to generate the critical CSS.
@@ -57,7 +59,7 @@ rake critical_path_css:generate
 
 To load the generated critical CSS into your layout, in the head tag, insert:
 
-```html
+```HTML+ERB
 <style>
   <%= CriticalPathCss.fetch(request.path) %>
 </style>
@@ -65,7 +67,7 @@ To load the generated critical CSS into your layout, in the head tag, insert:
 
 A simple example using loadcss-rails looks like:
 
-```html
+```HTML+ERB
 <style>
     <%= CriticalPathCss.fetch(request.path) %>
 </style>
