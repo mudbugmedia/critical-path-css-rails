@@ -5,8 +5,7 @@ module CriticalPathCss
 
     PENTHOUSE_PATH = "#{File.dirname(__FILE__)}/../penthouse/penthouse.js"
 
-    def initialize(main_css_relative_path)
-      @main_css_path = "#{Rails.root}/public#{main_css_relative_path}"
+    def initialize
       @config = Configuration.new
     end
 
@@ -17,7 +16,7 @@ module CriticalPathCss
     private
 
     def css_for_route(route)
-      Phantomjs.run(PENTHOUSE_PATH, @config.base_url + route, @main_css_path)
+      Phantomjs.run(PENTHOUSE_PATH, @config.base_url + route, @config.css_path)
     end
   end
 end

@@ -1,4 +1,8 @@
 defaults: &defaults
+  # If using the asset pipeline, provide the manifest name
+  manifest_name: application
+  # Else provide the relative path of your CSS file from the /public directory
+  # css_path: /path/to/css/from/public/main.css
   routes:
     - /
 
