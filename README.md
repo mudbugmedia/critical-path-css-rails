@@ -47,11 +47,11 @@ First, you'll need to configue a few things in the YAML file: `config/critical_p
 
 Before generating the CSS, ensure that your application is running (viewable from a browser) and the main CSS file exists. Then in a separate tab, run the rake task to generate the critical CSS.
 
-If your main CSS file does not already exist, and you are using the Asset Pipeline, generate the main CSS file.
+If you are using the Asset Pipeline, precompiling the assets will generate the critical CSS after the assets are precompiled.
 ```
 rake assets:precompile
 ```
-Generate the critical path CSS:
+Else you can generate the critical CSS manually using the below task:
 ```
 rake critical_path_css:generate
 ```
