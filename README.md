@@ -26,7 +26,7 @@ bundle install
 Run the generator to install the rake task and configuration file:
 
 ```
-rails generator critical_path_css:install
+rails generate critical_path_css:install
 ```
 
 The generator adds the following files:
