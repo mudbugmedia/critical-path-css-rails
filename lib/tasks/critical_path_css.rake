@@ -1,4 +1,4 @@
-require 'critical_path_css_rails'
+require 'critical-path-css-rails'
 
 namespace :critical_path_css do
   desc 'Generate critical CSS for the routes defined'
