@@ -32,7 +32,7 @@ module CriticalPathCss
     end
 
     def manifest_path
-      @manifest_path ||= ActionController::Base.helpers.stylesheet_path(manifest_name)
+      @manifest_path ||= ActionController::Base.helpers.stylesheet_path(manifest_name, host: '')
     end
   end
 end
