@@ -1,9 +1,10 @@
+require 'erb'
 module CriticalPathCss
   class Configuration
     CONFIGURATION_FILENAME = 'critical_path_css.yml'
 
     def initialize
-      @configurations = YAML.load_file(configuration_file_path)[Rails.env]
+      @configurations = YAML.load(ERB.new(File.read(configuration_file_path)).result)[Rails.env]
     end
 
     def base_url
