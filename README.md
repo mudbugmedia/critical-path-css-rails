@@ -74,8 +74,9 @@ A simple example using loadcss-rails looks like:
 <script>
     loadCSS("<%= stylesheet_path('application') %>");
 </script>
+<link rel="preload" href="<%= stylesheet_path('application') %>" as="style" onload="this.rel='stylesheet'">
 <noscript>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <link rel="stylesheet" href="<%= stylesheet_path('application') %>">
 </noscript>
 ```
 
