@@ -9,7 +9,7 @@ module CriticalPathCss
 
   def self.generate_all
     CssFetcher.new.fetch.each do |route, css|
-      Rails.cache.write(route, css, namespace: CACHE_NAMESPACE)
+      Rails.cache.write(route, css, namespace: CACHE_NAMESPACE, expires_in: nil)
     end
   end
 

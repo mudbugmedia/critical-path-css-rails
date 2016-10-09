@@ -64,7 +64,7 @@ To load the generated critical CSS into your layout, in the head tag, insert:
 
 ```HTML+ERB
 <style>
-  <%= CriticalPathCss.fetch(request.path) %>
+    <%= CriticalPathCss.fetch(request.path) %>
 </style>
 ```
 
@@ -74,9 +74,12 @@ A simple example using [loadcss-rails](https://github.com/michael-misshore/loadc
 <style>
   <%= CriticalPathCss.fetch(request.path) %>
 </style>
-<%= tag :link, as: 'style', href: stylesheet_path('application'), onload: raw("this.rel='stylesheet'"), rel: 'preload' %>
+<script>
+    loadCSS("<%= stylesheet_path('application') %>");
+</script>
+<link rel="preload" href="<%= stylesheet_path('application') %>" as="style" onload="this.rel='stylesheet'">
 <noscript>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <link rel="stylesheet" href="<%= stylesheet_path('application') %>">
 </noscript>
 ```
 
