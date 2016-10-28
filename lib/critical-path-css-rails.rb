@@ -4,7 +4,8 @@ module CriticalPathCss
   CACHE_NAMESPACE = 'critical-path-css'
 
   def self.generate(route)
-      Rails.cache.write(route, CssFetcher.new.fetch_route(route), namespace: CACHE_NAMESPACE)
+      Rails.cache.write(route, CssFetcher.new.fetch_route(route),
+                        namespace: CACHE_NAMESPACE, expires_in: nil)
   end
 
   def self.generate_all

@@ -105,6 +105,8 @@ In addition to the `critical_path_css:generate` rake task described above, you a
 rake critical_path_css:clear_all
 ```
 
+NOTE: The `clear_all` and `clear_matched` methods will not work with Memcached due to the latter's incompatibility with Rails' `delete_matched` method.  We recommend using an alternative cache such as [Redis](https://github.com/redis-store/redis-rails).
+
 Careful use of these methods allows the developer to generate critical path CSS dynamically within the app.  The user should strongly consider using a [background job](http://edgeguides.rubyonrails.org/active_job_basics.html) when generating CSS in order to avoid tying up a rails thread.  The `generate` method will send a GET request to your server which could cause infinite recursion if the developer is not careful.
 
 A user can use these methods to [dynamically generate critical path CSS](https://gist.github.com/taranda/1597e97ccf24c978b59aef9249666c77) without using the `rake critical_path_css:generate` rake task and without hardcoding the application's routes into `config/critical_path_css.yml`.  See [this Gist](https://gist.github.com/taranda/1597e97ccf24c978b59aef9249666c77) for an example of such an implementation.
