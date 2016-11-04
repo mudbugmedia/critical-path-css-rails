@@ -22,10 +22,6 @@ module CriticalPathCss
     Rails.cache.delete_matched(routes,namespace: CACHE_NAMESPACE)
   end
 
-  def self.clear_all
-    self.clear_matched('*')
-  end
-
   def self.fetch(route)
     Rails.cache.read(route, namespace: CACHE_NAMESPACE) || ''
   end

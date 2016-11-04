@@ -7,7 +7,10 @@ namespace :critical_path_css do
   end
   desc 'Clear all critical CSS from the cache'
   task clear_all: :environment do
-  	CriticalPathCss.clear_all
+  	# Use the following for Redis cache implmentations
+  	CriticalPathCss.clear_matched('*')
+  	# Some other cache implementations may require the following syntax instead
+  	# CriticalPathCss.clear_matched(/.*/)
   end
 end
 
