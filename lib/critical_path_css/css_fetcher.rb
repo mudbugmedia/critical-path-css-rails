@@ -13,7 +13,11 @@ module CriticalPathCss
       @config.routes.map { |route| [route, css_for_route(route)] }.to_h
     end
 
-    private
+    def fetch_route(route)
+      css_for_route route
+    end
+
+  protected
 
     def css_for_route(route)
       Phantomjs.run(PENTHOUSE_PATH, @config.base_url + route, @config.css_path)
