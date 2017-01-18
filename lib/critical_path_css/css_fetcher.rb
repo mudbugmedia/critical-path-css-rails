@@ -20,7 +20,15 @@ module CriticalPathCss
   protected
 
     def css_for_route(route)
-      Phantomjs.run(PENTHOUSE_PATH, @config.base_url + route, @config.css_path)
+      url = @config.base_url + route
+
+      Phantomjs.run(
+        '--ignore-ssl-errors=true',
+        '--ssl-protocol=tlsv1',
+        PENTHOUSE_PATH,
+        url,
+        @config.css_path
+      )
     end
   end
 end
