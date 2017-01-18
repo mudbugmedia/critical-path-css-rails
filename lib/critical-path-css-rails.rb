@@ -4,8 +4,12 @@ module CriticalPathCss
   CACHE_NAMESPACE = 'critical-path-css'
 
   def self.generate(route)
-      Rails.cache.write(route, CssFetcher.new.fetch_route(route),
-                        namespace: CACHE_NAMESPACE, expires_in: nil)
+    Rails.cache.write(
+      route,
+      CssFetcher.new.fetch_route(route),
+      namespace: CACHE_NAMESPACE,
+      expires_in: nil
+    )
   end
 
   def self.generate_all
@@ -19,7 +23,7 @@ module CriticalPathCss
   end
 
   def self.clear_matched(routes)
-    Rails.cache.delete_matched(routes,namespace: CACHE_NAMESPACE)
+    Rails.cache.delete_matched(routes, namespace: CACHE_NAMESPACE)
   end
 
   def self.fetch(route)
