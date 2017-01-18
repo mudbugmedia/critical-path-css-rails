@@ -34,7 +34,7 @@ rails generate critical_path_css:install
 
 The generator adds the following files:
 
-* `config/critical_path_css.yml`
+* `config/critical_path_css.yml` **Note:** This file supports ERB.
 * `lib/tasks/critical_path_css.rake`
 
 
