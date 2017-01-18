@@ -17,7 +17,7 @@ module CriticalPathCss
       css_for_route route
     end
 
-  protected
+    protected
 
     def css_for_route(route)
       url = @config.base_url + route
