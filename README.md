@@ -10,14 +10,14 @@ This gem uses [PhantomJS](https://github.com/colszowka/phantomjs-gem) and [Penth
 
 ## Update
 
-Version 0.3.0 is not compatible with previous versions.  Please read the Upgrading from Previous Versions section below for more information.
+Versions below 0.3.0 are not compatible with this version.  Please read the Upgrading from Previous Versions section below for more information.
 
 ## Installation
 
 Add `critical-path-css-rails` to your Gemfile:
 
 ```
-gem 'critical-path-css-rails', '~> 0.3.0'
+gem 'critical-path-css-rails', '~> 0.4.0'
 ```
 
 Download and install by running:
