@@ -1,39 +1,29 @@
 require 'erb'
 module CriticalPathCss
   class Configuration
-    CONFIGURATION_FILENAME = 'critical_path_css.yml'
 
-    def initialize
-      @configurations = YAML.load(ERB.new(File.read(configuration_file_path)).result)[Rails.env]
+    def initialize(config)
+      @config = config
     end
 
     def base_url
-      @configurations['base_url']
+      @config['base_url']
     end
 
     def css_path
-      @css_path ||= begin
-        relative_path = @configurations['css_path'] || manifest_path
-        "#{Rails.root}/public#{relative_path}"
-      end
+      @config['css_path']
     end
 
     def manifest_name
-      @configurations['manifest_name']
+      @config['manifest_name']
     end
 
     def routes
-      @configurations['routes']
+      @config['routes']
     end
 
-    private
-
-    def configuration_file_path
-      @configuration_file_path ||= Rails.root.join('config', CONFIGURATION_FILENAME)
-    end
-
-    def manifest_path
-      @manifest_path ||= ActionController::Base.helpers.stylesheet_path(manifest_name, host: '')
+    def penthouse_options
+      @config['penthouse_options'] || {}
     end
   end
 end
