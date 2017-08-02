@@ -19,3 +19,4 @@ tmp
 .DS_Store
 /node_modules/
 .rspec_status
+/npm-debug.log
