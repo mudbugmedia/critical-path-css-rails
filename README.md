@@ -6,7 +6,7 @@ This gem give you the ability to load only the CSS you *need* on an initial page
 
 This gem assumes that you'll load the rest of the CSS asyncronously. At the moment, the suggested way is to use the [loadcss-rails](https://github.com/michael-misshore/loadcss-rails) gem.
 
-This gem uses [PhantomJS](https://github.com/colszowka/phantomjs-gem) and [Penthouse](https://github.com/pocketjoso/penthouse) to generate the critical CSS.
+This gem uses [Penthouse](https://github.com/pocketjoso/penthouse) to generate the critical CSS.
 
 ## Update
 
@@ -17,7 +17,7 @@ Versions below 0.3.0 are not compatible with this version.  Please read the Upgr
 Add `critical-path-css-rails` to your Gemfile:
 
 ```
-gem 'critical-path-css-rails', '~> 0.4.0'
+gem 'critical-path-css-rails', '~> 1.0.0'
 ```
 
 Download and install by running:
@@ -128,9 +128,9 @@ Answer 'Y' when prompted to overwrite `critical_path_css.rake`.  However, overwr
 The critical-path-css-rails gem follows these version guidelines:
 
 ```
-patch version bump = updates to critical-path-css-rails and patch-level updates to Penthouse and PhantomJS
-minor version bump = minor-level updates to critical-path-css-rails, Penthouse, and PhantomJS
-major version bump = major-level updates to critical-path-css-rails, Penthouse, PhantomJS, and updates to Rails which may be backwards-incompatible
+patch version bump = updates to critical-path-css-rails and patch-level updates to Penthouse
+minor version bump = minor-level updates to critical-path-css-rails and Penthouse
+major version bump = major-level updates to critical-path-css-rails, Penthouse, and updates to Rails which may be backwards-incompatible
 ```
 
 ## Contributing
