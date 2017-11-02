@@ -8,9 +8,9 @@ This gem assumes that you'll load the rest of the CSS asyncronously. At the mome
 
 This gem uses [Penthouse](https://github.com/pocketjoso/penthouse) to generate the critical CSS.
 
-## Update
+## Upgrading to the Latest Release
 
-Versions below 0.3.0 are not compatible with this version.  Please read the Upgrading from Previous Versions section below for more information.
+Upgrade instructions from each version are included below.
 
 ## Installation
 
@@ -110,7 +110,10 @@ Careful use of these methods allows the developer to generate critical path CSS 
 
 A user can use these methods to [dynamically generate critical path CSS](https://gist.github.com/taranda/1597e97ccf24c978b59aef9249666c77) without using the `rake critical_path_css:generate` rake task and without hardcoding the application's routes into `config/critical_path_css.yml`.  See [this Gist](https://gist.github.com/taranda/1597e97ccf24c978b59aef9249666c77) for an example of such an implementation.
 
-## Upgrading from Previous Versions
+## Upgrading from version 0.X.X to 1.0.0
+To maintain the latest version of Penthouse, this gem now depends on NodeJS and NVM to be installed on the system.
+
+## Upgrading from a version earlier than 0.3.0
 
 The latest version of Critcal Path CSS Rails changes the functionality of the `generate` method.  In past versions,
 `generate` would produce CSS for all of the routes listed in `config/critical_path_css.yml`.  This functionality has been replaced by the `generate_all` method, and `generate` will only produce CSS for one route.
