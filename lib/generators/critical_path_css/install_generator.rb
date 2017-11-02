@@ -1,7 +1,7 @@
 require 'rails/generators'
 
 module CriticalPathCss
-  class InstallGenerator < Rails::Generators::Base
+  class InstallGenerator < ::Rails::Generators::Base
     source_root File.expand_path('..', __FILE__)
 
     # Copy the needed rake task for generating critical CSS
