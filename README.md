@@ -138,8 +138,6 @@ major version bump = major-level updates to critical-path-css-rails, Penthouse, 
 
 ## Contributing
 
-Feel free to open an issue ticket if you find something that could be improved. A couple notes:
-
-* If the Penthouse.js script is outdated (i.e. maybe a new version of Penthouse.js was released yesterday), feel free to open an issue and prod us to get that thing updated. However, for security reasons, we won't be accepting pull requests with updated Penthouse.js script.
+Feel free to open an issue ticket if you find something that could be improved.
 
 Copyright Mudbug Media and Michael Misshore, released under the MIT License.
