@@ -17,7 +17,7 @@ Upgrade instructions from each version are included below.
 Add `critical-path-css-rails` to your Gemfile:
 
 ```
-gem 'critical-path-css-rails', '~> 1.0.0'
+gem 'critical-path-css-rails', '~> 2.0.0'
 ```
 
 Download and install by running:
@@ -110,7 +110,7 @@ Careful use of these methods allows the developer to generate critical path CSS 
 
 A user can use these methods to [dynamically generate critical path CSS](https://gist.github.com/taranda/1597e97ccf24c978b59aef9249666c77) without using the `rake critical_path_css:generate` rake task and without hardcoding the application's routes into `config/critical_path_css.yml`.  See [this Gist](https://gist.github.com/taranda/1597e97ccf24c978b59aef9249666c77) for an example of such an implementation.
 
-## Upgrading from version 0.X.X to 1.0.0
+## Upgrading from version 0.X.X to 1.0.0 or later
 To maintain the latest version of Penthouse, this gem now depends on NodeJS and NVM to be installed on the system.
 
 ## Upgrading from a version earlier than 0.3.0

@@ -44,11 +44,6 @@ module CriticalPathCss
         'renderWaitTime' => 100,
         # set to false to load (external) JS (default: true)
         'blockJSRequests' => true,
-        # see `phantomjs --help` for the list of all available options
-        'phantomJsOptions' => {
-          'ignore-ssl-errors' => true,
-          'ssl-protocol' => 'tlsv1'
-        },
         'customPageHeaders' => {
           # use if getting compression errors like 'Data corrupted':
           'Accept-Encoding' => 'identity'
