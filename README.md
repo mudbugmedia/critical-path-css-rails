@@ -17,7 +17,7 @@ Upgrade instructions from each version are included below.
 Add `critical-path-css-rails` to your Gemfile:
 
 ```
-gem 'critical-path-css-rails', '~> 2.0.0'
+gem 'critical-path-css-rails', '~> 2.3.0'
 ```
 
 Download and install by running:
