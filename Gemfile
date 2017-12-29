@@ -3,8 +3,10 @@ source 'https://rubygems.org'
 gemspec
 
 group :development, :test do
+  gem 'actionpack'
   gem 'byebug', platform: [:ruby], require: false
   gem 'rubocop', require: false
+  gem 'rspec-rails', '~> 3.6'
 end
 
 # HACK: npm install on bundle
