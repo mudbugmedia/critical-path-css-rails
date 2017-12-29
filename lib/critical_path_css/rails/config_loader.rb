@@ -4,7 +4,7 @@ module CriticalPathCss
       CONFIGURATION_FILENAME = 'critical_path_css.yml'.freeze
 
       def load
-        config = YAML.safe_load(ERB.new(File.read(configuration_file_path)).result)[::Rails.env]
+        config = YAML.safe_load(ERB.new(File.read(configuration_file_path)).result, [], [], true)[::Rails.env]
         config['css_path'] = "#{::Rails.root}/public" + (
             config['css_path'] ||
               ActionController::Base.helpers.stylesheet_path(
