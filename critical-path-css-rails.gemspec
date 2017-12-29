@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.executables  = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   s.require_path = 'lib'
 
-  s.add_development_dependency 'rspec', '~> 3.6'
+  s.add_development_dependency 'rspec', '~> 3.7'
 
   s.extensions = ['ext/npm/extconf.rb']
 end

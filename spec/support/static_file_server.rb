@@ -2,7 +2,7 @@ require 'socket'
 
 module StaticFileServer
   class << self
-    def start # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
+    def start
       @port = get_free_port
       rd, wt = IO.pipe
       @pid = fork do
