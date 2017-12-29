@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require 'bundler'
-require 'critical-path-css-rails'
-
-require 'support/static_file_server'
 
 Bundler.require :default, :development
 
