@@ -6,7 +6,6 @@ AllCops:
     - 'spec/*_helper.rb'
     - 'Gemfile'
     - 'Rakefile'
-    - 'Vagrantfile'
 
 Documentation:
     Enabled: false

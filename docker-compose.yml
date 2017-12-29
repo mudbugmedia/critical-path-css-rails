@@ -1,0 +1,29 @@
+version: '2'
+services:
+    ruby:
+        build:
+            context: .
+            dockerfile: docker/ruby/Dockerfile
+        volumes:
+            - .:/app:rw
+        volumes_from:
+            - data
+        depends_on:
+            - postgres
+        env_file: docker/ruby/.env
+        container_name: criticalpathcss_ruby
+
+    postgres:
+        image: postgres:10.1
+        ports:
+            - 5432:5432
+        volumes_from:
+            - data
+        env_file: ./docker/postgres/config
+
+    data:
+        image: postgres:10.1
+        volumes:
+            - /var/lib/postgresql/data
+            - /gems
+        command: "true"

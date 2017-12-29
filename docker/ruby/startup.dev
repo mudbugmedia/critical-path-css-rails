@@ -1,0 +1,5 @@
+#!/bin/bash
+
+bundle check || bundle install
+
+tail -f /dev/null
