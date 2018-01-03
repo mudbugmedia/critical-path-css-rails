@@ -4,13 +4,14 @@ services:
         build:
             context: .
             dockerfile: docker/ruby/Dockerfile
+        ports:
+            - 9292:9292
         volumes:
             - .:/app:rw
         volumes_from:
             - data
         env_file: docker/ruby/.env
         container_name: criticalpathcss_ruby
-
     data:
         build:
             context: .

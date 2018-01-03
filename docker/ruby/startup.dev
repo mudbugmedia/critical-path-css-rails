@@ -2,4 +2,4 @@
 
 bundle check || bundle install
 
-tail -f /dev/null
+bundle exec rackup --host 0.0.0.0

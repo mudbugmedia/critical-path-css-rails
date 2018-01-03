@@ -7,6 +7,8 @@ group :development, :test do
   gem 'byebug', platform: [:ruby], require: false
   gem 'rubocop', require: false
   gem 'rspec-rails', '~> 3.6'
+  gem 'capybara', '~> 2.16'
+  gem 'pry-rails'
 end
 
 # HACK: npm install on bundle
