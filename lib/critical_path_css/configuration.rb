@@ -1,7 +1,6 @@
 require 'erb'
 module CriticalPathCss
   class Configuration
-
     def initialize(config)
       @config = config
     end
