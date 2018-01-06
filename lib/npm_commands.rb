@@ -2,9 +2,8 @@
 
 # NPM wrapper with helpful error messages
 class NpmCommands
-
   # @return [Boolean] whether the installation succeeded
-  def install(*args) # rubocop:disable Metrics/MethodLength
+  def install(*args)
     return false unless check_nodejs_installed
     STDERR.puts 'Installing npm dependencies...'
     install_status = Dir.chdir File.expand_path('..', File.dirname(__FILE__)) do
@@ -24,7 +23,7 @@ class NpmCommands
 
   private
 
-  def check_nodejs_installed # rubocop:disable Metrics/MethodLength
+  def check_nodejs_installed
     return true if executable?('node')
     STDERR.puts(
       '-' * 60,

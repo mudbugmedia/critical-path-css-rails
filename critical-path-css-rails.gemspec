@@ -1,20 +1,20 @@
 require File.expand_path('../lib/critical_path_css/rails/version', __FILE__)
 
-Gem::Specification.new do |s|
-  s.name        = 'critical-path-css-rails'
-  s.version     = CriticalPathCSS::Rails::VERSION
-  s.platform    = Gem::Platform::RUBY
-  s.authors     = ['Michael Misshore']
-  s.email       = 'mmisshore@gmail.com'
-  s.summary     = 'Critical Path CSS for Rails!'
-  s.description = 'Only load the CSS you need for the initial viewport in Rails!'
-  s.license     = 'MIT'
+Gem::Specification.new do |gem|
+  gem.name        = 'critical-path-css-rails'
+  gem.version     = CriticalPathCSS::Rails::VERSION
+  gem.platform    = Gem::Platform::RUBY
+  gem.authors     = ['Michael Misshore']
+  gem.email       = 'mmisshore@gmail.com'
+  gem.summary     = 'Critical Path CSS for Rails!'
+  gem.description = 'Only load the CSS you need for the initial viewport in Rails!'
+  gem.license     = 'MIT'
 
-  s.files        = `git ls-files`.split("\n")
-  s.executables  = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
-  s.require_path = 'lib'
+  gem.files        = `git ls-files`.split("\n")
+  gem.executables  = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
+  gem.require_path = 'lib'
 
-  s.add_development_dependency 'rspec', '~> 3.6'
+  gem.add_development_dependency 'combustion', '~> 0.7.0'
 
-  s.extensions = ['ext/npm/extconf.rb']
+  gem.extensions = ['ext/npm/extconf.rb']
 end

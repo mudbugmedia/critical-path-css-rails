@@ -3,7 +3,7 @@ require 'critical_path_css/css_fetcher'
 require 'critical_path_css/rails/config_loader'
 
 module CriticalPathCss
-  CACHE_NAMESPACE = 'critical-path-css'
+  CACHE_NAMESPACE = 'critical-path-css'.freeze
 
   def self.generate(route)
     ::Rails.cache.write(

@@ -1,11 +1,17 @@
 # frozen_string_literal: true
 
-require 'bundler/setup'
-require 'critical-path-css-rails'
+require 'bundler'
 
-require 'support/static_file_server'
+Bundler.require :default, :development
+
+Combustion.initialize! :action_controller, :action_view
+
+require 'rspec/rails'
+require 'capybara/rails'
 
 RSpec.configure do |config|
+  config.use_transactional_fixtures = true
+
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'
 

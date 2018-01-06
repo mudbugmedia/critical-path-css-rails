@@ -33,7 +33,7 @@ module CriticalPathCss
           #  '^\.regexWorksToo'
         ],
         # ms; abort critical CSS generation after this timeout
-        'timeout' => 30000,
+        'timeout' => 30_000,
         # set to true to throw on CSS errors (will run faster if no errors)
         'strict' => false,
         # characters; strip out inline base64 encoded resources larger than this

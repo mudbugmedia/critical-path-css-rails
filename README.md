@@ -126,6 +126,20 @@ rails generate critical_path_css:install
 
 Answer 'Y' when prompted to overwrite `critical_path_css.rake`.  However, overwriting `critical_path_css.yml` is not necessary and not recommended.
 
+
+## Testing
+
+This gem is to be tested inside of docker/docker-compose. [Combustion](https://github.com/pat/combustion), alongside rspec-rails and capybara, are the primary components for testing. To run the test, you'll need to have [Docker](https://docs.docker.com/engine/installation) installed. Once installed, run the following commands in the gem's root to build, run, and shell into the docker container.
+
+```Bash
+  docker-compose build
+  docker-compose up -d
+  docker exec -it $(cat app_container_name) /bin/bash
+```
+
+Once shell'd in, run `bundle exec rspec spec` to run the test. The test rails app lives in `spec/internal`, and it can be viewed locally at `http://localhost:9292/`
+
+
 ## Versions
 
 The critical-path-css-rails gem follows these version guidelines:
