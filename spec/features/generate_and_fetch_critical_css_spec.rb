@@ -1,6 +1,6 @@
 require 'spec_helper.rb'
 
-RSpec.describe 'fetching the critical css' do
+RSpec.describe 'generate and fetch the critical css' do
   before do
     CriticalPathCss.generate_all
   end
