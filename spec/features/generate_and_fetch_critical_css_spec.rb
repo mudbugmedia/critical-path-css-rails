@@ -10,7 +10,7 @@ RSpec.describe 'generate and fetch the critical css' do
 
     it 'displays the correct critical CSS' do
       visit route
-      expect(page).to have_content 'color: red;'
+      expect(page).to have_content 'p{color:red}'
     end
   end
 end
