@@ -131,7 +131,7 @@ Developers upgrading from versions prior to 0.3.0 will need to replace `Critical
 rails generate critical_path_css:install
 ```
 
-Answer 'Y' when prompted to overwrite `critical_path_css.rake`.  However, overwriting `critical_path_css.yml` is not recommend nor necessary.
+Answer 'Y' when prompted to overwrite `critical_path_css.rake`.  However, overwriting `critical_path_css.yml` is not recommended nor necessary.
 
 
 ## Testing / Development
