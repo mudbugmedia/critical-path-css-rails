@@ -13,6 +13,10 @@ module CriticalPathCss
       @config['css_path']
     end
 
+    def css_paths
+      @config['css_paths']
+    end
+
     def manifest_name
       @config['manifest_name']
     end
