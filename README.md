@@ -146,6 +146,12 @@ This gem is to be tested inside of docker/docker-compose. [Combustion](https://g
 
 Once shell'd in, run `bundle exec rspec spec` to run the test. The test rails app lives in `spec/internal`, and it can be viewed locally at `http://localhost:9292/`
 
+If you encounter Chromium errors trying to run the tests, installing [Puppeteer](https://github.com/GoogleChrome/puppeteer) might help.
+
+```Bash
+  npm install puppeteer
+```
+
 
 ## Versions
 
