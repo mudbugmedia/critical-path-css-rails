@@ -6,16 +6,11 @@ module CriticalPathCss
   CACHE_NAMESPACE = 'critical-path-css'.freeze
 
   def self.generate(route)
-    ::Rails.cache.write(
-      route,
-      CssFetcher.new(config).fetch_route(route),
-      namespace: CACHE_NAMESPACE,
-      expires_in: nil
-    )
+    ::Rails.cache.write(route, fetcher.fetch_route(route), namespace: CACHE_NAMESPACE, expires_in: nil)
   end
 
   def self.generate_all
-    CssFetcher.new(config).fetch.each do |route, css|
+    fetcher.fetch.each do |route, css|
       ::Rails.cache.write(route, css, namespace: CACHE_NAMESPACE, expires_in: nil)
     end
   end
@@ -32,7 +27,7 @@ module CriticalPathCss
     ::Rails.cache.read(route, namespace: CACHE_NAMESPACE) || ''
   end
 
-  def self.config
-    @config ||= Configuration.new(CriticalPathCss::Rails::ConfigLoader.new.load)
+  def self.fetcher
+    @fetcher ||= CssFetcher.new(Configuration.new(CriticalPathCss::Rails::ConfigLoader.new.load))
   end
 end
