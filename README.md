@@ -87,7 +87,7 @@ A simple example using [loadcss-rails](https://github.com/michael-misshore/loadc
 <script>
     loadCSS("<%= stylesheet_path('application') %>");
 </script>
-<link rel="preload" href="<%= stylesheet_path('application') %>" as="style" onload="this.rel='stylesheet'">
+<link rel="preload" href="<%= stylesheet_path('application') %>" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
     <link rel="stylesheet" href="<%= stylesheet_path('application') %>">
 </noscript>
