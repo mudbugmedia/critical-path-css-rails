@@ -27,7 +27,7 @@ However, more packages may need to be installed depending on your OS distributio
 After reviewing the dependency requirements, add `critical-path-css-rails` to your Gemfile:
 
 ```
-gem 'critical-path-css-rails', '~> 2.6.0'
+gem 'critical-path-css-rails', '~> 2.10.0'
 ```
 
 Download and install by running:
@@ -88,7 +88,7 @@ A simple example using [loadcss-rails](https://github.com/michael-misshore/loadc
 <script>
     loadCSS("<%= stylesheet_path('application') %>");
 </script>
-<link rel="preload" href="<%= stylesheet_path('application') %>" as="style" onload="this.rel='stylesheet'">
+<link rel="preload" href="<%= stylesheet_path('application') %>" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
     <link rel="stylesheet" href="<%= stylesheet_path('application') %>">
 </noscript>
