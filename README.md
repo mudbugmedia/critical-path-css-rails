@@ -27,7 +27,7 @@ However, more packages may need to be installed depending on your OS distributio
 After reviewing the dependency requirements, add `critical-path-css-rails` to your Gemfile:
 
 ```
-gem 'critical-path-css-rails', '~> 2.6.0'
+gem 'critical-path-css-rails', '~> 2.10.0'
 ```
 
 Download and install by running:
@@ -54,6 +54,7 @@ First, you'll need to configue a few things in the YAML file: `config/critical_p
 
 * `manifest_name`: If you're using the asset pipeline, add the manifest name.
 * `css_path`: If you're not using the asset pipeline, you'll need to define the path to the application's main CSS. The gem assumes your CSS lives in `RAILS_ROOT/public`. If your main CSS file is in `RAILS_ROOT/public/assets/main.css`, you would set the variable to `/assets/main.css`.
+* `css_paths`: If you have the need to specify multiple CSS source files, you can do so with `css_paths`. Note that `css_path` and `css_paths` are **mutually exclusive**; if using `css_path`, configuration for `css_paths` should be omitted, and vice versa. When using this option, a separate CSS path must be specified for each route, and they will be matched based on the order specified (the first CSS path will be applied to the first route, the second CSS path to the second route, etc).
 * `routes`: List the routes that you would like to generate the critical CSS for. (i.e. /resources, /resources/show/1, etc.)
 * `base_url`: Add your application's URL for the necessary environments.
 
@@ -87,7 +88,7 @@ A simple example using [loadcss-rails](https://github.com/michael-misshore/loadc
 <script>
     loadCSS("<%= stylesheet_path('application') %>");
 </script>
-<link rel="preload" href="<%= stylesheet_path('application') %>" as="style" onload="this.rel='stylesheet'">
+<link rel="preload" href="<%= stylesheet_path('application') %>" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
     <link rel="stylesheet" href="<%= stylesheet_path('application') %>">
 </noscript>
@@ -145,6 +146,12 @@ This gem is to be tested inside of docker/docker-compose. [Combustion](https://g
 ```
 
 Once shell'd in, run `bundle exec rspec spec` to run the test. The test rails app lives in `spec/internal`, and it can be viewed locally at `http://localhost:9292/`
+
+If you encounter Chromium errors trying to run the tests, installing [Puppeteer](https://github.com/GoogleChrome/puppeteer) might help.
+
+```Bash
+  npm install puppeteer
+```
 
 
 ## Versions
