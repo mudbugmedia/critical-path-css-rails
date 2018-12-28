@@ -10,7 +10,10 @@ module CriticalPathCss
     end
 
     def fetch
-      @config.routes.map { |route| [route, css_for_route(route)] }.to_h
+      @config.routes.map.with_index { |route, index|
+        css_path = @config.css_paths[index].present? ? @config.css_paths[index] : @config.css_path
+        [route, css_for_route(route, css_path)]
+      }.to_h
     end
 
     def fetch_route(route)
@@ -19,10 +22,10 @@ module CriticalPathCss
 
     protected
 
-    def css_for_route(route)
+    def css_for_route(route, css_path)
       options = {
         'url' => @config.base_url + route,
-        'css' => @config.css_path,
+        'css' => css_path,
         ## optional params
         # viewport dimensions
         'width' => 1300,
