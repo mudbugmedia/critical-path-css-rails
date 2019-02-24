@@ -25,10 +25,6 @@ RSpec.describe 'ConfigLoader' do
         CONFIG
       }
 
-      before do
-        subject.load
-      end
-
       it 'sets css_path with the path' do
         expect(subject.config['css_path']).to eq '/app/spec/internal/public/test.css'
       end
@@ -57,10 +53,6 @@ RSpec.describe 'ConfigLoader' do
             <<: *defaults
         CONFIG
       }
-
-      before do
-        subject.load
-      end
 
       it 'sets css_path to empty string' do
         expect(subject.config['css_path']).to eq ''
@@ -93,7 +85,7 @@ RSpec.describe 'ConfigLoader' do
       }
 
       it 'raises an error' do
-        expect { subject.load }.to raise_error LoadError, 'Cannot specify both css_path and css_paths'
+        expect { subject }.to raise_error LoadError, 'Cannot specify both css_path and css_paths'
       end
     end
 
@@ -119,7 +111,7 @@ RSpec.describe 'ConfigLoader' do
       }
 
       it 'raises an error' do
-        expect { subject.load }.to raise_error LoadError, 'Must specify css_paths for each route'
+        expect { subject }.to raise_error LoadError, 'Must specify css_paths for each route'
       end
     end
   end
