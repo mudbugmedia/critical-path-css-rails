@@ -10,33 +10,21 @@ module CriticalPathCss
     end
 
     def fetch
-      @config.routes.map.with_index { |route, index|
-        css_path = @config.css_paths[index].present? ? @config.css_paths[index] : @config.css_path
-        [route, css_for_route(route, css_path)]
-      }.to_h
+      @config.routes.map { |route| [route, fetch_route(route)] }.to_h
     end
 
     def fetch_route(route)
-      css_for_route route
-    end
-
-    protected
-
-    def css_for_route(route, css_path)
       options = {
         'url' => @config.base_url + route,
-        'css' => css_path,
-        ## optional params
-        # viewport dimensions
+        'css' => fetch_css_path_for_route(route),
         'width' => 1300,
         'height' => 900,
+        'timeout' => 30_000,
         # CSS selectors to always include, e.g.:
         'forceInclude' => [
           #  '.keepMeEvenIfNotSeenInDom',
           #  '^\.regexWorksToo'
         ],
-        # ms; abort critical CSS generation after this timeout
-        'timeout' => 30_000,
         # set to true to throw on CSS errors (will run faster if no errors)
         'strict' => false,
         # characters; strip out inline base64 encoded resources larger than this
@@ -62,6 +50,18 @@ module CriticalPathCss
               "  with options=#{options.inspect}"
       end
       out
+    end
+
+    private
+
+    def fetch_css_path_for_route(route)
+      index_for_route = @config.routes.index(route)
+
+      if index_for_route && @config.css_paths[index_for_route]
+        @config.css_paths[index_for_route]
+      else
+        @config.css_path
+      end
     end
   end
 end

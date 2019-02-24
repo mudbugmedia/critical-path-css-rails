@@ -2,6 +2,7 @@ require 'spec_helper'
 
 RSpec.describe 'ConfigLoader' do
   let(:subject) { CriticalPathCss::Rails::ConfigLoader.new }
+
   describe '#load' do
     before do
       allow(File).to receive(:read).and_return(config_file)
@@ -25,15 +26,11 @@ RSpec.describe 'ConfigLoader' do
       }
 
       it 'sets css_path with the path' do
-        config = subject.load
-
-        expect(config['css_path']).to eq '/app/spec/internal/public/test.css'
+        expect(subject.config['css_path']).to eq '/app/spec/internal/public/test.css'
       end
 
       it 'leaves css_paths empty' do
-        config = subject.load
-
-        expect(config['css_paths']).to eq []
+        expect(subject.config['css_paths']).to eq []
       end
     end
 
@@ -58,15 +55,11 @@ RSpec.describe 'ConfigLoader' do
       }
 
       it 'sets css_path to empty string' do
-        config = subject.load
-
-        expect(config['css_path']).to eq ''
+        expect(subject.config['css_path']).to eq ''
       end
 
       it 'leaves css_paths to an array of paths' do
-        config = subject.load
-
-        expect(config['css_paths']).to eq ['/app/spec/internal/public/test.css','/app/spec/internal/public/test2.css']
+        expect(subject.config['css_paths']).to eq ['/app/spec/internal/public/test.css','/app/spec/internal/public/test2.css']
       end
     end
 
@@ -92,7 +85,7 @@ RSpec.describe 'ConfigLoader' do
       }
 
       it 'raises an error' do
-        expect { subject.load }.to raise_error LoadError, 'Cannot specify both css_path and css_paths'
+        expect { subject }.to raise_error LoadError, 'Cannot specify both css_path and css_paths'
       end
     end
 
@@ -118,7 +111,7 @@ RSpec.describe 'ConfigLoader' do
       }
 
       it 'raises an error' do
-        expect { subject.load }.to raise_error LoadError, 'Must specify css_paths for each route'
+        expect { subject }.to raise_error LoadError, 'Must specify css_paths for each route'
       end
     end
   end
