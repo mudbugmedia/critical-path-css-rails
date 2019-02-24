@@ -3,8 +3,6 @@ module CriticalPathCss
     class ConfigLoader
       CONFIGURATION_FILENAME = 'critical_path_css.yml'.freeze
 
-      attr_reader :config
-
       def load
         validate_css_paths
         format_css_paths
