@@ -2,6 +2,7 @@ require 'spec_helper'
 
 RSpec.describe 'ConfigLoader' do
   let(:subject) { CriticalPathCss::Rails::ConfigLoader.new }
+
   describe '#load' do
     before do
       allow(File).to receive(:read).and_return(config_file)
@@ -24,16 +25,16 @@ RSpec.describe 'ConfigLoader' do
         CONFIG
       }
 
-      it 'sets css_path with the path' do
-        config = subject.load
+      before do
+        subject.load
+      end
 
-        expect(config['css_path']).to eq '/app/spec/internal/public/test.css'
+      it 'sets css_path with the path' do
+        expect(subject.config['css_path']).to eq '/app/spec/internal/public/test.css'
       end
 
       it 'leaves css_paths empty' do
-        config = subject.load
-
-        expect(config['css_paths']).to eq []
+        expect(subject.config['css_paths']).to eq []
       end
     end
 
@@ -57,16 +58,16 @@ RSpec.describe 'ConfigLoader' do
         CONFIG
       }
 
-      it 'sets css_path to empty string' do
-        config = subject.load
+      before do
+        subject.load
+      end
 
-        expect(config['css_path']).to eq ''
+      it 'sets css_path to empty string' do
+        expect(subject.config['css_path']).to eq ''
       end
 
       it 'leaves css_paths to an array of paths' do
-        config = subject.load
-
-        expect(config['css_paths']).to eq ['/app/spec/internal/public/test.css','/app/spec/internal/public/test2.css']
+        expect(subject.config['css_paths']).to eq ['/app/spec/internal/public/test.css','/app/spec/internal/public/test2.css']
       end
     end
 

@@ -3,22 +3,15 @@ module CriticalPathCss
     class ConfigLoader
       CONFIGURATION_FILENAME = 'critical_path_css.yml'.freeze
 
+      attr_reader :config
+
       def load
-        config = YAML.safe_load(ERB.new(File.read(configuration_file_path)).result, [], [], true)[::Rails.env]
-        validate_css_path config
-        if config['css_path']
-          config['css_path'] = "#{::Rails.root}/public" + (
-            config['css_path'] ||
-              ActionController::Base.helpers.stylesheet_path(
-                config['manifest_name'], host: ''
-              )
-          )
-          config['css_paths'] = []
-        else
-          config['css_path'] = ''
-          config['css_paths'] = config['css_paths'].collect { |path| "#{::Rails.root}/public#{path}" }
-        end
-        config
+        validate_css_paths
+        format_css_paths
+      end
+
+      def config
+        @config ||= YAML.safe_load(ERB.new(File.read(configuration_file_path)).result, [], [], true)[::Rails.env]
       end
 
       private
@@ -27,7 +20,21 @@ module CriticalPathCss
         @configuration_file_path ||= ::Rails.root.join('config', CONFIGURATION_FILENAME)
       end
 
-      def validate_css_path(config)
+      def format_css_paths
+        if config['css_path']
+          config['css_path']  = format_path(config['css_path'])
+          config['css_paths'] = []
+        else
+          config['css_path']  = ''
+          config['css_paths'] = config['css_paths'].collect { |path| format_path(path) }
+        end
+      end
+
+      def format_path(path)
+        "#{::Rails.root}/public#{path}"
+      end
+
+      def validate_css_paths
         if config['css_path'] && config['css_paths']
           raise LoadError, 'Cannot specify both css_path and css_paths'
         elsif config['css_paths'] && config['css_paths'].length != config['routes'].length

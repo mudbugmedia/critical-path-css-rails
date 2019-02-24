@@ -28,6 +28,14 @@ module CriticalPathCss
   end
 
   def self.fetcher
-    @fetcher ||= CssFetcher.new(Configuration.new(CriticalPathCss::Rails::ConfigLoader.new.load))
+    @fetcher ||= CssFetcher.new(Configuration.new(config))
+  end
+
+  def self.config
+    @config ||= begin
+      loader = CriticalPathCss::Rails::ConfigLoader.new
+      loader.load
+      loader.config
+    end
   end
 end
