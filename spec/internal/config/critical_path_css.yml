@@ -1,6 +1,5 @@
 defaults: &defaults
   base_url: http://0.0.0.0:9292
-  manifest_name: application
   css_path: /test.css
   routes:
     - /
