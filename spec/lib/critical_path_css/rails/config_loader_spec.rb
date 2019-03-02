@@ -81,7 +81,7 @@ RSpec.describe 'ConfigLoader' do
       }
 
       it 'sets css_path with the path' do
-        expect(subject.config['css_path']).to eq '/app/spec/internal/public/test.css'
+        expect(subject.config['css_path']).to eq '/stylesheets/application.css'
       end
 
       it 'leaves css_paths empty' do
