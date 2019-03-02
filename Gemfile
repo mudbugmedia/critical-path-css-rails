@@ -6,8 +6,8 @@ group :development, :test do
   gem 'actionpack'
   gem 'byebug', platform: [:ruby], require: false
   gem 'rubocop', require: false
-  gem 'rspec-rails', '~> 3.6'
-  gem 'capybara', '~> 2.16'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'capybara', '~> 3.14'
   gem 'pry-rails'
 end
 

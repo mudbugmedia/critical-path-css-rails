@@ -63,6 +63,32 @@ RSpec.describe 'ConfigLoader' do
       end
     end
 
+    context 'when no paths are specified' do
+      let(:config_file) {
+        <<~CONFIG
+          defaults: &defaults
+            base_url: http://0.0.0.0:9292
+            manifest_name: application
+            routes:
+              - /
+
+          development:
+            <<: *defaults
+
+          test:
+            <<: *defaults
+        CONFIG
+      }
+
+      it 'sets css_path with the path' do
+        expect(subject.config['css_path']).to eq '/stylesheets/application.css'
+      end
+
+      it 'leaves css_paths empty' do
+        expect(subject.config['css_paths']).to eq []
+      end
+    end
+
     context 'when single css_path and multiple css_paths are both specified' do
       let(:config_file) {
         <<~CONFIG

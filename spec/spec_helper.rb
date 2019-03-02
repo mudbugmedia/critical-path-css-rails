@@ -10,6 +10,8 @@ require 'rspec/rails'
 require 'capybara/rails'
 
 RSpec.configure do |config|
+  config.include Capybara::DSL
+
   config.use_transactional_fixtures = true
 
   # Enable flags like --only-failures and --next-failure
