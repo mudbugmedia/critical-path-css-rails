@@ -7,12 +7,13 @@ RSpec.describe 'CssFetcher' do
   let(:response) { ['foo','', OpenStruct.new(exitstatus: 0)] }
   let(:routes)   { ['/', '/new_route'] }
   let(:config) do
-    OpenStruct.new(
-      base_url: base_url,
-      css_path: css_path,
-      css_paths: css_paths,
-      penthouse_options: {},
-      routes: routes
+    CriticalPathCss::Configuration.new(
+      OpenStruct.new(
+        base_url: base_url,
+        css_paths: css_paths,
+        penthouse_options: {},
+        routes: routes
+      )
     )
   end
 

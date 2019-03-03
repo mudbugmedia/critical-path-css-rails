@@ -24,5 +24,9 @@ module CriticalPathCss
     def penthouse_options
       @config['penthouse_options'] || {}
     end
+
+    def path_for_route(route)
+      css_paths[routes.index(route)] || css_paths.first
+    end
   end
 end
