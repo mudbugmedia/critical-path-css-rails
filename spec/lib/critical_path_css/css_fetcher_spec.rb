@@ -3,11 +3,12 @@ require 'spec_helper'
 RSpec.describe 'CssFetcher' do
   subject { CriticalPathCss::CssFetcher.new(config) }
 
+  let(:base_url) { 'http://0.0.0.0:9292' }
   let(:response) { ['foo','', OpenStruct.new(exitstatus: 0)] }
-  let(:routes) { ['/', '/new_route'] }
+  let(:routes)   { ['/', '/new_route'] }
   let(:config) do
     OpenStruct.new(
-      base_url: 'http://0.0.0.0:9292',
+      base_url: base_url,
       css_path: css_path,
       css_paths: css_paths,
       penthouse_options: {},
@@ -23,6 +24,7 @@ RSpec.describe 'CssFetcher' do
       it 'generates css for the single route' do
         expect(Open3).to receive(:capture3) do |arg1, arg2, arg3|
           options = JSON.parse(arg3)
+
           expect(options['css']).to eq '/test.css'
         end.once.and_return(response)
 
@@ -39,8 +41,10 @@ RSpec.describe 'CssFetcher' do
       it 'generates css for each route from the same file' do
         expect(Open3).to receive(:capture3) do |arg1, arg2, arg3|
           options = JSON.parse(arg3)
+
           expect(options['css']).to eq '/test.css'
         end.twice.and_return(response)
+
         subject.fetch
       end
     end
@@ -52,9 +56,12 @@ RSpec.describe 'CssFetcher' do
       it 'generates css for each route from the respective file' do
         expect(Open3).to receive(:capture3) do |arg1, arg2, arg3|
           options = JSON.parse(arg3)
-          expect(options['css']).to eq '/test.css' if options['url'] == 'http://0.0.0.0:9292/'
-          expect(options['css']).to eq '/test2.css' if options['url'] == 'http://0.0.0.0:9292/new_route'
+
+          css_paths.each_with_index do |path, index|
+            expect(options['css']).to eq path if options['url'] == "#{base_url}/#{routes[index]}"
+          end
         end.twice.and_return(response)
+
         subject.fetch
       end
     end
@@ -67,10 +74,12 @@ RSpec.describe 'CssFetcher' do
       it 'generates css for each route from the respective file' do
         expect(Open3).to receive(:capture3) do |arg1, arg2, arg3|
           options = JSON.parse(arg3)
-          expect(options['css']).to eq '/test.css' if options['url'] == 'http://0.0.0.0:9292/'
-          expect(options['css']).to eq '/test2.css' if options['url'] == 'http://0.0.0.0:9292/new_route'
-          expect(options['css']).to eq '/test.css' if options['url'] == 'http://0.0.0.0:9292/newer_route'
+
+          css_paths.each_with_index do |path, index|
+            expect(options['css']).to eq path if options['url'] == "#{base_url}/#{routes[index]}"
+          end
         end.thrice.and_return(response)
+
         subject.fetch
       end
     end
