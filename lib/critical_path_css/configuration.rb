@@ -9,10 +9,6 @@ module CriticalPathCss
       @config['base_url']
     end
 
-    def css_path
-      @config['css_path']
-    end
-
     def css_paths
       @config['css_paths']
     end
@@ -27,6 +23,10 @@ module CriticalPathCss
 
     def penthouse_options
       @config['penthouse_options'] || {}
+    end
+
+    def path_for_route(route)
+      css_paths[routes.index(route)] || css_paths.first
     end
   end
 end

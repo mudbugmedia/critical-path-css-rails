@@ -7,19 +7,19 @@ RSpec.describe 'CssFetcher' do
   let(:response) { ['foo','', OpenStruct.new(exitstatus: 0)] }
   let(:routes)   { ['/', '/new_route'] }
   let(:config) do
-    OpenStruct.new(
-      base_url: base_url,
-      css_path: css_path,
-      css_paths: css_paths,
-      penthouse_options: {},
-      routes: routes
+    CriticalPathCss::Configuration.new(
+      OpenStruct.new(
+        base_url: base_url,
+        css_paths: css_paths,
+        penthouse_options: {},
+        routes: routes
+      )
     )
   end
 
   describe '#fetch_route' do
     context 'when a single css_path is configured' do
-      let(:css_path) { '/test.css' }
-      let(:css_paths) { [] }
+      let(:css_paths) { ['/test.css'] }
 
       it 'generates css for the single route' do
         expect(Open3).to receive(:capture3) do |arg1, arg2, arg3|
@@ -35,8 +35,7 @@ RSpec.describe 'CssFetcher' do
 
   describe '#fetch' do
     context 'when a single css_path is configured' do
-      let(:css_path) { '/test.css' }
-      let(:css_paths) { [] }
+      let(:css_paths) { ['/test.css'] }
 
       it 'generates css for each route from the same file' do
         expect(Open3).to receive(:capture3) do |arg1, arg2, arg3|
@@ -50,7 +49,6 @@ RSpec.describe 'CssFetcher' do
     end
 
     context 'when multiple css_paths are configured' do
-      let(:css_path) { '' }
       let(:css_paths) { ['/test.css', '/test2.css'] }
 
       it 'generates css for each route from the respective file' do
@@ -67,7 +65,6 @@ RSpec.describe 'CssFetcher' do
     end
 
     context 'when same css file applies to multiple routes' do
-      let(:css_path) { '' }
       let(:css_paths) { ['/test.css', '/test2.css', '/test.css'] }
       let(:routes) { ['/', '/new_route', '/newer_route'] }
 
