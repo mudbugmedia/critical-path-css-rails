@@ -1,0 +1,15 @@
+defaults: &defaults
+  base_url: http://0.0.0.0:9292
+  css_path: /test.css
+  css_paths:
+    - /test.css
+    - /test2.css
+  routes:
+    - /
+    - /new_route
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
