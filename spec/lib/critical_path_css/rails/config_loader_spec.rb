@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe 'ConfigLoader' do
-  let(:subject) { CriticalPathCss::Rails::ConfigLoader.new }
+  subject { CriticalPathCss::Rails::ConfigLoader.new }
 
   describe '#load' do
     before do

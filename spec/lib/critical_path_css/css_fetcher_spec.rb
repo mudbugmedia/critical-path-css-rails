@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 RSpec.describe 'CssFetcher' do
-  let(:subject) { CriticalPathCss::CssFetcher.new(config) }
+  subject { CriticalPathCss::CssFetcher.new(config) }
+
   let(:response) { ['foo','', OpenStruct.new(exitstatus: 0)] }
   let(:routes) { ['/', '/new_route'] }
   let(:config) do
