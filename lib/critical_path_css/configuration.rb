@@ -9,10 +9,6 @@ module CriticalPathCss
       @config['base_url']
     end
 
-    def css_path
-      @config['css_path']
-    end
-
     def css_paths
       @config['css_paths']
     end

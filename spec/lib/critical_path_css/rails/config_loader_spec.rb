@@ -11,21 +11,13 @@ RSpec.describe 'ConfigLoader' do
     context 'when single css_path is specified' do
       let(:config_file) { file_fixture('config/single-css-path.yml').read }
 
-      it 'sets css_path with the path' do
-        expect(subject.config['css_path']).to eq '/app/spec/internal/public/test.css'
-      end
-
-      it 'leaves css_paths empty' do
-        expect(subject.config['css_paths']).to eq []
+      it 'sets css_paths with the lone path' do
+        expect(subject.config['css_paths']).to eq ['/app/spec/internal/public/test.css']
       end
     end
 
     context 'when multiple css_paths are specified' do
       let(:config_file) { file_fixture('config/mutliple-css-paths.yml').read }
-
-      it 'sets css_path to empty string' do
-        expect(subject.config['css_path']).to eq ''
-      end
 
       it 'leaves css_paths to an array of paths' do
         expect(subject.config['css_paths']).to eq ['/app/spec/internal/public/test.css','/app/spec/internal/public/test2.css']
@@ -35,12 +27,8 @@ RSpec.describe 'ConfigLoader' do
     context 'when no paths are specified' do
       let(:config_file) { file_fixture('config/no-paths-specified.yml').read }
 
-      it 'sets css_path with the path' do
-        expect(subject.config['css_path']).to eq '/stylesheets/application.css'
-      end
-
-      it 'leaves css_paths empty' do
-        expect(subject.config['css_paths']).to eq []
+      it 'sets css_paths with the lone manifest path' do
+        expect(subject.config['css_paths']).to eq ['/stylesheets/application.css']
       end
     end
 
