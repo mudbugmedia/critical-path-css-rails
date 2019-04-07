@@ -46,7 +46,7 @@ module CriticalPathCss
       if !st.exitstatus.zero? || out.empty? && !err.empty?
         STDOUT.puts out
         STDERR.puts err
-        raise "Failed to get CSS for route #{route}\n" \
+        STDERR.puts "Failed to get CSS for route #{route}\n" \
               "  with options=#{options.inspect}"
       end
       out
