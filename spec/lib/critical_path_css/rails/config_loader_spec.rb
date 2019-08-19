@@ -32,6 +32,22 @@ RSpec.describe 'ConfigLoader' do
       end
     end
 
+    context 'when manifest name and css path are both specified' do
+      let(:config_file) { file_fixture('config/manifest-and-path-both-specified.yml').read }
+
+      it 'raises an error' do
+        expect { subject }.to raise_error LoadError, 'Cannot specify both manifest_name and css_path(s)'
+      end
+    end
+
+    context 'when manifest name and css paths are both specified' do
+      let(:config_file) { file_fixture('config/manifest-and-paths-both-specified.yml').read }
+
+      it 'raises an error' do
+        expect { subject }.to raise_error LoadError, 'Cannot specify both manifest_name and css_path(s)'
+      end
+    end
+
     context 'when single css_path and multiple css_paths are both specified' do
       let(:config_file) { file_fixture('config/paths-both-specified.yml').read }
 
