@@ -33,7 +33,9 @@ module CriticalPathCss
       end
 
       def validate_css_paths
-        if config['css_path'] && config['css_paths']
+        if config['manifest_name'] && (config['css_path'] || config['css_paths'])
+          raise LoadError, 'Cannot specify both manifest_name and css_path(s)'
+        elsif config['css_path'] && config['css_paths']
           raise LoadError, 'Cannot specify both css_path and css_paths'
         elsif config['css_paths'] && config['css_paths'].length != config['routes'].length
           raise LoadError, 'Must specify css_paths for each route'

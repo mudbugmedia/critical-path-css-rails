@@ -52,9 +52,11 @@ The generator adds the following files:
 
 First, you'll need to configue a few things in the YAML file: `config/critical_path_css.yml`
 
+**Note** that `manifest_name`, `css_path`, `css_paths` are all **mutually exclusive**; if using `css_path`, configuration for `manifest_name` AND `css_paths` should be omitted.
+
 * `manifest_name`: If you're using the asset pipeline, add the manifest name.
 * `css_path`: If you're not using the asset pipeline, you'll need to define the path to the application's main CSS. The gem assumes your CSS lives in `RAILS_ROOT/public`. If your main CSS file is in `RAILS_ROOT/public/assets/main.css`, you would set the variable to `/assets/main.css`.
-* `css_paths`: If you have the need to specify multiple CSS source files, you can do so with `css_paths`. Note that `css_path` and `css_paths` are **mutually exclusive**; if using `css_path`, configuration for `css_paths` should be omitted, and vice versa. When using this option, a separate CSS path must be specified for each route, and they will be matched based on the order specified (the first CSS path will be applied to the first route, the second CSS path to the second route, etc).
+* `css_paths`: If you have the need to specify multiple CSS source files, you can do so with `css_paths`. When using this option, a separate CSS path must be specified for each route, and they will be matched based on the order specified (the first CSS path will be applied to the first route, the second CSS path to the second route, etc).
 * `routes`: List the routes that you would like to generate the critical CSS for. (i.e. /resources, /resources/show/1, etc.)
 * `base_url`: Add your application's URL for the necessary environments.
 
