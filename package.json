@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "dependencies": {
-    "penthouse": "=1.10.2"
+    "penthouse": "=2.2.0"
   },
   "license": "MIT",
   "config": {
