@@ -26,7 +26,7 @@ module CriticalPathCss
     end
 
     def path_for_route(route)
-      css_paths[routes.index(route).to_i]
+      css_paths[routes.index(route).to_i] || css_paths.first
     end
   end
 end
