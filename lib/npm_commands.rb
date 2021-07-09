@@ -7,14 +7,14 @@ class NpmCommands
     return false unless check_nodejs_installed
     STDERR.puts 'Installing npm dependencies...'
     install_status = Dir.chdir File.expand_path('..', File.dirname(__FILE__)) do
-      system('npm', 'install', *args)
+      system('yarn', 'install', *args)
     end
     STDERR.puts(
       *if install_status
-         ['npm dependencies installed']
+         ['yarn dependencies installed']
        else
          ['-' * 60,
-          'Error: npm dependencies installation failed',
+          'Error: yarn dependencies installation failed',
           '-' * 60]
        end
     )
@@ -27,7 +27,7 @@ class NpmCommands
     return true if executable?('node')
     STDERR.puts(
       '-' * 60,
-      'Error: critical-path-css-rails requires NodeJS and NPM.',
+      'Error: critical-path-css-rails requires NodeJS and Yarn.',
       *if executable?('brew')
          ['  To install NodeJS and NPM, run:',
           '  brew install node']
