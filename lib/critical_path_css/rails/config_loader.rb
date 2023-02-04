@@ -9,7 +9,7 @@ module CriticalPathCss
       end
 
       def config
-        @config ||= YAML.safe_load(ERB.new(File.read(configuration_file_path)).result, [], [], true)[::Rails.env]
+        @config ||= YAML.safe_load(ERB.new(File.read(configuration_file_path)).result, aliases: true)[::Rails.env]
       end
 
       private
